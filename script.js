@@ -335,3 +335,87 @@ document.addEventListener('click', (event) => {
   event.preventDefault();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+
+/* Scroll reveal effects for main/about/contacts pages only.
+   Project detail pages are intentionally skipped. */
+(() => {
+  if (document.body.classList.contains('project-detail-page')) return;
+
+  const targets = [];
+
+  const addTargets = (selector, variant = '', baseDelay = 0, step = 80) => {
+    document.querySelectorAll(selector).forEach((element, index) => {
+      if (!element || element.closest('.project-detail-page')) return;
+      targets.push({
+        element,
+        variant,
+        delay: baseDelay + index * step
+      });
+    });
+  };
+
+  if (document.body.classList.contains('about-page')) {
+    // The first screen has its own page-load animation.
+    addTargets('.about-skills__title', 'reveal-from-left', 0);
+    addTargets('.about-skills__field', 'reveal-soft-zoom', 120);
+    addTargets('.about-facts__title', 'reveal-from-left', 0);
+    addTargets('.about-fact', 'reveal-soft-zoom', 80, 110);
+  } else if (document.body.classList.contains('contacts-page')) {
+    // The top contact text has its own page-load animation.
+    addTargets('.social-card', 'reveal-soft-zoom', 0, 90);
+    addTargets('.contacts-instagram-note', '', 120);
+  } else {
+    // The first screen has its own page-load animation; the desktop parallax showcase is untouched.
+    addTargets('.projects-mobile .project-card', 'reveal-soft-zoom', 0, 100);
+  }
+
+  addTargets('.footer__brand, .footer__column', '', 0, 80);
+
+  const uniqueTargets = Array.from(new Map(targets.map((item) => [item.element, item])).values());
+
+  uniqueTargets.forEach(({ element, variant, delay }) => {
+    element.classList.add('reveal-on-scroll');
+    if (variant) element.classList.add(variant);
+    element.style.setProperty('--reveal-delay', `${delay}ms`);
+  });
+
+  if (!('IntersectionObserver' in window)) {
+    uniqueTargets.forEach(({ element }) => element.classList.add('is-visible'));
+    return;
+  }
+
+  const revealObserver = new IntersectionObserver((entries, observerInstance) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observerInstance.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.16,
+    rootMargin: '0px 0px -8% 0px'
+  });
+
+  uniqueTargets.forEach(({ element }) => revealObserver.observe(element));
+})();
+
+
+
+/* Contacts social cards should reveal only after the first real scroll */
+(() => {
+  if (!document.body.classList.contains('contacts-page')) return;
+
+  const markStarted = () => {
+    if (window.scrollY > 24) {
+      document.body.classList.add('has-started-scroll');
+      window.removeEventListener('scroll', markStarted);
+      window.removeEventListener('wheel', markStarted);
+      window.removeEventListener('touchmove', markStarted);
+    }
+  };
+
+  markStarted();
+  window.addEventListener('scroll', markStarted, { passive: true });
+  window.addEventListener('wheel', markStarted, { passive: true });
+  window.addEventListener('touchmove', markStarted, { passive: true });
+})();
