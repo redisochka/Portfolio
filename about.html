@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>login.n.v</title>
+  <title>login.n.v - обо мне</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="img/favicon.png">
 </head>
@@ -27,33 +27,83 @@
   </header>
 
   <main class="about-main">
-    <section class="about-section">
-      <div class="container">
-        <h1 class="about-section__title">Обо мне</h1>
+    <section class="about-hero" aria-label="Обо мне">
+      <div class="container about-hero__inner">
+        <div class="about-hero__content">
+          <h1 class="about-hero__title"><span>/</span> Обо мне</h1>
 
-        <div class="about-lead">
-          <p>Меня зовут <span>Никита</span>,</p>
-          <p>я <span>графический дизайнер</span>,</p>
-          <p>работающий с брендингом,</p>
-          <p>айдентикой и визуальными</p>
-          <p>концепциями.</p>
+          <div class="about-hero__text">
+            <p>Я <span>графический дизайнер</span>, работаю с айдентикой, брендингом и визуальным оформлением проектов.</p>
+            <p><span>Имею высшее образование</span>, окончил СПбГУПТД по направлению «Прикладная информатика в дизайне».</p>
+            <p><span>В дизайне с 2022 года.</span> Сейчас живу и работаю в Санкт-Петербурге, продолжаю развиваться в сфере дизайна.</p>
+          </div>
+
+          <a class="about-hero__resume" href="https://drive.google.com/file/d/16o9yc1Eh5Iwqo1YdH1iT3_R4tj817CXR/view?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Посмотреть резюме">Посмотреть резюме&nbsp;→</a>
         </div>
 
-        <figure class="about-image about-image--first">
-          <img src="img/about-photo-1.png" alt="Портрет Никиты Логинова">
-        </figure>
-
-        <div class="about-statement">
-          <p><span>Создаю</span> понятный, аккуратный</p>
-          <p>и выразительный <span>дизайн</span></p>
-          <p>с вниманием к деталям.</p>
-        </div>
-
-        <figure class="about-image about-image--second">
-          <img src="img/about-photo-2.png" alt="Никита Логинов в чёрной куртке и галстуке">
+        <figure class="about-hero__image">
+          <img src="img/about-hero-photo.png" alt="Никита Логинов">
         </figure>
       </div>
     </section>
+
+    <section class="about-skills" aria-label="Hard skills">
+      <div class="container about-skills__inner">
+        <h2 class="about-skills__title"><span>/</span> Hard skills</h2>
+
+        <div class="about-skills__field">
+          <span class="about-skill about-skill--1">Брендинг</span>
+          <span class="about-skill about-skill--2">Разработка айдентики</span>
+          <span class="about-skill about-skill--3">Создание логотипов</span>
+          <span class="about-skill about-skill--4">UX/UI дизайн</span>
+          <span class="about-skill about-skill--5">Инфографика</span>
+          <span class="about-skill about-skill--6">Подготовка к печати</span>
+          <span class="about-skill about-skill--7">Frontend-разработка</span>
+          <span class="about-skill about-skill--8">Figma</span>
+          <span class="about-skill about-skill--9">Adobe</span>
+          <span class="about-skill about-skill--10">Оформление соц сетей</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-facts" aria-label="Немного фактов обо мне">
+      <div class="container about-facts__inner">
+        <h2 class="about-facts__title"><span>/</span> Немного фактов</h2>
+
+        <div class="about-facts__grid">
+          <article class="about-fact about-fact--large about-fact--map">
+            <div class="about-fact__image about-fact__image--map">
+              <img src="img/facts-map.png" alt="Карта с городами переездов">
+            </div>
+            <p><span>/1.</span> За жизнь я переезжал пять раз между разными городами, поэтому не раз оказывался в новом городе, новом месте и новом коллективе. Из-за этого я быстро привык знакомиться с людьми, включаться в общение и находить общий язык в разных компаниях.</p>
+          </article>
+
+          <article class="about-fact about-fact--large about-fact--team">
+            <div class="about-fact__image about-fact__image--team">
+              <img src="img/facts-team.png" alt="Студенческая команда на мероприятии">
+            </div>
+            <p><span>/2.</span> Я принимал активное участие в студенческих творческих мероприятиях. Три года был старостой этажа, и за это время наша команда успела занять первое место в нескольких мероприятиях, а также получить призовые места в других конкурсах. Этот опыт помог мне брать на себя ответственность, объединять людей и доводить общие идеи до результата.</p>
+          </article>
+
+          <div class="about-facts__side">
+            <article class="about-fact about-fact--small">
+              <div class="about-fact__image about-fact__image--photo">
+                <img src="img/facts-photo.jpg" alt="Фотография с лавочкой у воды">
+              </div>
+              <p><span>/3.</span> Люблю фотографировать - для меня это хобби, в котором можно поймать случайный красивый момент. Со временем увлечение стало чуть серьёзнее: я получил квалификацию фотографа, а мои работы участвовали в выставке Музея петербургского авангарда.</p>
+            </article>
+
+            <article class="about-fact about-fact--small">
+              <div class="about-fact__image about-fact__image--cpm">
+                <img src="img/facts-cpm.jpg" alt="Бейдж посетителя выставки CPM">
+              </div>
+              <p><span>/4.</span> Мне интересен мир моды, поэтому я регулярно посещаю выставку CPM в Москве. Там можно увидеть новые коллекции, бренды и визуальные подходы, которые потом помогают шире смотреть на дизайн.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer" id="contacts">
